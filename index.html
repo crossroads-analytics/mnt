@@ -1,1497 +1,389 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MNT Haushaltsauflösung — Website Mockup</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #1a2d3d;
-    --navy-deep: #0f1c28;
-    --teal: #2e7d6e;
-    --teal-light: #3a9b88;
-    --off-white: #f4f3ef;
-    --warm-white: #fafaf8;
-    --text-muted: #7a8a96;
-    --border: #e2e0db;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MNT Haushaltsauflösung – Professionelle Entrümpelung in Bremen & Niedersachsen. Schnell, diskret, zum Festpreis." />
+  <title>MNT Haushaltsauflösung – Bremen & Niedersachsen</title>
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Netlify Identity (optional, for CMS) -->
+  <!-- <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
 
-  body {
-    background: #e8e6e1;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--navy);
-    min-height: 100vh;
-    padding: 0;
-  }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  /* ── Selector bar ── */
-  .selector-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--navy-deep);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 56px;
-    border-bottom: 1px solid #2a3f52;
-  }
-  .selector-label {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #4a6070;
-  }
-  .selector-tabs {
-    display: flex;
-    gap: 2px;
-    background: #162231;
-    padding: 4px;
-    border-radius: 6px;
-  }
-  .selector-tab {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 7px 22px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    background: transparent;
-    color: #4a6070;
-    transition: all 0.2s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .selector-tab.active {
-    background: var(--teal);
-    color: white;
-  }
-  .selector-note {
-    font-size: 11px;
-    color: #2e7d6e;
-    letter-spacing: 1px;
-  }
+  <link rel="stylesheet" href="assets/css/style.css" />
 
-  .variant { display: none; }
-  .variant.active { display: block; }
-
-  /* ── Shared section styles ── */
-  .site {
-    max-width: 1100px;
-    margin: 40px auto;
-    background: var(--warm-white);
-    box-shadow: 0 40px 120px rgba(0,0,0,0.25);
-  }
-
-  /* ── NAV ── */
-  .site-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 48px;
-    height: 72px;
-    background: white;
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .nav-brand-mark {
-    width: 36px;
-    height: 36px;
-    background: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    color: white;
-    letter-spacing: 1px;
-  }
-  .nav-brand-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--navy);
-    line-height: 1.2;
-  }
-  .nav-brand-sub {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-weight: 400;
-  }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-  }
-  .nav-link {
-    font-size: 13px;
-    font-weight: 500;
-    color: #4a5a66;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .nav-cta {
-    background: var(--teal);
-    color: white;
-    padding: 10px 22px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-  }
-
-  /* ── HERO A ── */
-  .hero-a {
-    background: var(--navy);
-    min-height: 520px;
-    display: grid;
-    grid-template-columns: 1fr 480px;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero-a::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, rgba(46,125,110,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .hero-a-content {
-    padding: 80px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 28px;
-    position: relative;
-    z-index: 1;
-  }
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--teal-light);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-  }
-  .hero-tag::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--teal);
-  }
-  .hero-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: 52px;
-    font-weight: 800;
-    color: white;
-    line-height: 1.0;
-    letter-spacing: -1px;
-  }
-  .hero-headline span { color: var(--teal-light); }
-  .hero-sub {
-    font-size: 16px;
-    color: #8eaabb;
-    line-height: 1.6;
-    max-width: 380px;
-    font-weight: 300;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-  }
-  .btn-primary {
-    background: var(--teal);
-    color: white;
-    padding: 15px 32px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.2s;
-  }
-  .btn-ghost {
-    color: #7a9aaa;
-    font-size: 14px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .hero-a-image {
-    background: #243a4e;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero-a-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    padding: 20px;
-  }
-  .hero-trust {
-    background: #152433;
-    padding: 18px 56px;
-    display: flex;
-    gap: 40px;
-    align-items: center;
-  }
-  .trust-item {
-    font-size: 13px;
-    color: #7a9aaa;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .trust-item::before {
-    content: '✓';
-    color: var(--teal);
-    font-weight: 700;
-    font-size: 14px;
-  }
-
-  /* ── SERVICES ── */
-  .services-section {
-    padding: 80px 56px;
-    background: white;
-  }
-  .section-header {
-    margin-bottom: 48px;
-  }
-  .section-eyebrow {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--teal);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-eyebrow::before {
-    content: '';
-    width: 20px;
-    height: 1px;
-    background: var(--teal);
-  }
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: -0.5px;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-  }
-  .service-card {
-    background: white;
-    padding: 32px 28px;
-    position: relative;
-    transition: background 0.2s;
-  }
-  .service-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--border);
-    letter-spacing: 2px;
-    margin-bottom: 24px;
-  }
-  .service-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 10px;
-  }
-  .service-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  .service-link {
-    margin-top: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  /* ── ABOUT ── */
-  .about-section {
-    display: grid;
-    grid-template-columns: 360px 1fr;
-    min-height: 380px;
-    background: var(--off-white);
-  }
-  .about-stats {
-    background: var(--navy);
-    padding: 56px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 40px;
-  }
-  .stat-item {}
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--teal-light);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 13px;
-    color: #5a7a8a;
-    margin-top: 4px;
-    font-weight: 400;
-  }
-  .stat-divider {
-    width: 32px;
-    height: 1px;
-    background: #2a4050;
-  }
-  .about-content {
-    padding: 56px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
-  .about-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-  }
-  .about-text {
-    font-size: 15px;
-    color: #5a6a76;
-    line-height: 1.75;
-    font-weight: 300;
-  }
-  .about-link {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 4px;
-  }
-
-  /* ── PRICES ── */
-  .prices-section {
-    padding: 80px 56px;
-    background: white;
-  }
-  .prices-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 40px;
-  }
-  .price-card {
-    background: white;
-    padding: 36px 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .price-card.featured {
-    background: var(--navy);
-  }
-  .price-tier {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-muted);
-  }
-  .price-card.featured .price-tier { color: var(--teal-light); }
-  .price-amount {
-    font-family: 'Syne', sans-serif;
-    font-size: 38px;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1;
-  }
-  .price-card.featured .price-amount { color: white; }
-  .price-unit { font-size: 13px; color: var(--text-muted); font-weight: 400; }
-  .price-card.featured .price-unit { color: #5a7a8a; }
-  .price-divider { height: 1px; background: var(--border); }
-  .price-card.featured .price-divider { background: #2a4050; }
-  .price-features {
-    font-size: 13px;
-    color: #5a6a76;
-    line-height: 1.9;
-  }
-  .price-card.featured .price-features { color: #6a8a9a; }
-  .price-cta {
-    margin-top: auto;
-    padding: 12px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    text-align: center;
-    background: var(--off-white);
-    color: var(--navy);
-  }
-  .price-card.featured .price-cta {
-    background: var(--teal);
-    color: white;
-  }
-  .prices-note {
-    margin-top: 20px;
-    font-size: 12px;
-    color: var(--text-muted);
-    text-align: center;
-  }
-
-  /* ── FAQ ── */
-  .faq-section {
-    padding: 80px 56px;
-    background: var(--off-white);
-  }
-  .faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: 48px;
-    border-top: 1px solid var(--border);
-  }
-  .faq-item {
-    padding: 22px 0;
-    border-bottom: 1px solid var(--border);
-    padding-right: 40px;
-  }
-  .faq-item:nth-child(even) { padding-right: 0; padding-left: 40px; border-left: 1px solid var(--border); }
-  .faq-q {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--navy);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    cursor: pointer;
-  }
-  .faq-icon { color: var(--teal); font-size: 18px; flex-shrink: 0; }
-  .faq-answer {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 10px;
-    line-height: 1.7;
-  }
-
-  /* ── CONTACT ── */
-  .contact-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 400px;
-  }
-  .contact-left {
-    background: var(--navy);
-    padding: 64px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 24px;
-  }
-  .contact-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-  }
-  .contact-sub { font-size: 15px; color: #5a7a8a; font-weight: 300; }
-  .contact-info { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
-  .contact-info-item {
-    font-size: 14px;
-    color: #8aacba;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .contact-info-icon {
-    width: 32px;
-    height: 32px;
-    background: #243a4e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-  }
-  .contact-right {
-    background: white;
-    padding: 64px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 16px;
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .form-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
-  }
-  .form-input {
-    padding: 13px 16px;
-    background: var(--off-white);
-    border: 1px solid transparent;
-    font-size: 14px;
-    color: var(--navy);
-    font-family: 'DM Sans', sans-serif;
-  }
-  .form-input.focused {
-    border-color: var(--teal);
-    background: white;
-  }
-  .form-textarea {
-    padding: 13px 16px;
-    background: var(--off-white);
-    border: 1px solid transparent;
-    font-size: 14px;
-    color: var(--navy);
-    height: 90px;
-    resize: none;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .form-submit {
-    background: var(--teal);
-    color: white;
-    padding: 15px 32px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    align-self: flex-start;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* ── FOOTER ── */
-  .site-footer {
-    background: var(--navy-deep);
-    padding: 24px 56px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-brand {
-    font-family: 'Syne', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #3a5568;
-    letter-spacing: 2px;
-  }
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    font-size: 12px;
-    color: #3a5568;
-  }
-
-  /* ─────────────── VARIANT B ─────────────── */
-
-  .hero-b {
-    background: var(--navy);
-    min-height: 580px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: stretch;
-  }
-  .hero-b-bg-text {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    font-family: 'Syne', sans-serif;
-    font-size: 200px;
-    font-weight: 800;
-    color: rgba(255,255,255,0.025);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: -8px;
-  }
-  .hero-b-content {
-    flex: 1;
-    padding: 100px 56px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
-    position: relative;
-    z-index: 1;
-    max-width: 620px;
-  }
-  .hero-b-headline {
-    font-family: 'Syne', sans-serif;
-    font-size: 64px;
-    font-weight: 800;
-    color: white;
-    line-height: 0.95;
-    letter-spacing: -2px;
-  }
-  .hero-b-headline .accent {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--teal-light);
-  }
-  .hero-b-sub {
-    font-size: 16px;
-    color: #6a8a9a;
-    line-height: 1.65;
-    font-weight: 300;
-    max-width: 420px;
-  }
-  .hero-b-actions {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  .hero-b-right {
-    width: 440px;
-    position: relative;
-    background: linear-gradient(180deg, #152433 0%, #0f1c28 100%);
-    border-left: 1px solid #2a3f52;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px;
-    gap: 0;
-  }
-  .hero-b-truck {
-    width: 100%;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  .hero-b-truck img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .hero-b-callout {
-    background: var(--teal);
-    padding: 20px 28px;
-    margin-top: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-  .callout-stat {}
-  .callout-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: white;
-  }
-  .callout-label {
-    font-size: 11px;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 2px;
-  }
-
-  .services-b {
-    padding: 80px 56px;
-    background: var(--off-white);
-  }
-  .services-b-list {
-    margin-top: 40px;
-    border-top: 1px solid var(--border);
-  }
-  .service-row {
-    display: grid;
-    grid-template-columns: 60px 200px 1fr 120px;
-    align-items: center;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    gap: 24px;
-  }
-  .service-row-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--border);
-    letter-spacing: 2px;
-  }
-  .service-row-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--navy);
-  }
-  .service-row-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  .service-row-link {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--teal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: right;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 4px;
-  }
-
-  .calc-section {
-    padding: 80px 56px;
-    background: white;
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 64px;
-    align-items: center;
-  }
-  .calc-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 32px;
-    letter-spacing: -0.3px;
-  }
-  .calc-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .calc-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-  }
-  .calc-chips {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .calc-chip {
-    padding: 8px 18px;
-    background: var(--off-white);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--navy);
-    cursor: pointer;
-    border: 1px solid var(--border);
-  }
-  .calc-chip.active {
-    background: var(--navy);
-    color: white;
-    border-color: var(--navy);
-  }
-  .calc-slider-track {
-    height: 3px;
-    background: var(--border);
-    position: relative;
-    margin: 8px 0;
-  }
-  .calc-slider-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 40%;
-    height: 100%;
-    background: var(--teal);
-  }
-  .calc-slider-thumb {
-    position: absolute;
-    left: 40%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 16px;
-    height: 16px;
-    background: var(--navy);
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
-  .calc-result {
-    background: var(--navy);
-    padding: 40px 36px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .calc-result-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--teal-light);
-  }
-  .calc-result-price {
-    font-family: 'Syne', sans-serif;
-    font-size: 56px;
-    font-weight: 800;
-    color: white;
-    line-height: 1;
-  }
-  .calc-result-note {
-    font-size: 12px;
-    color: #4a6a7a;
-    line-height: 1.5;
-  }
-  .calc-result-divider { height: 1px; background: #2a3f52; }
-  .calc-result-cta {
-    background: var(--teal);
-    color: white;
-    padding: 14px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 8px;
-  }
-
-  /* placeholder label */
-  .img-placeholder {
-    background: #243a4e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    color: #3a5a6a;
-    font-size: 12px;
-    font-family: 'DM Sans', monospace;
-  }
-
-  /* tweaks panel */
-  #tweaks-panel {
-    display: none;
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: white;
-    border: 1px solid var(--border);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    padding: 20px;
-    width: 240px;
-    z-index: 9999;
-    font-family: 'DM Sans', sans-serif;
-  }
-  #tweaks-panel h3 {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .tweak-row { margin-bottom: 14px; }
-  .tweak-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .tweak-row select, .tweak-row input[type=range] {
-    width: 100%;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    padding: 6px 8px;
-    border: 1px solid var(--border);
-    background: var(--off-white);
-    color: var(--navy);
-  }
-
-  /* Scroll snap for full-page feel */
-  .scroll-hint {
-    text-align: center;
-    padding: 16px;
-    font-size: 11px;
-    color: #aaa;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-</style>
+  <!-- Netlify Hidden Form (required for form detection on deploy) -->
+  <form name="anfrage" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="tel" name="telefon" />
+    <input type="email" name="email" />
+    <textarea name="nachricht"></textarea>
+  </form>
 </head>
+
 <body>
 
-<div class="selector-bar">
-  <span class="selector-label">MNT Haushaltsauflösung</span>
-  <div class="selector-tabs">
-    <button class="selector-tab active" onclick="showVariant('a')">Variante A</button>
-    <button class="selector-tab" onclick="showVariant('b')">Variante B</button>
-  </div>
-  <span class="selector-note">Klick zum Wechseln</span>
-</div>
-
-<!-- ═══════════════════════════════ VARIANT A ═══════════════════════════════ -->
-<div class="variant active" id="var-a">
-  <div class="site">
-
-    <!-- NAV -->
-    <nav class="site-nav">
-      <div class="nav-brand">
-        <div class="nav-brand-mark">MNT</div>
-        <div>
-          <div class="nav-brand-text">MNT</div>
-          <div class="nav-brand-sub">Haushaltsauflösung</div>
+  <!-- ═══════════════════════════════════════════
+       HEADER / NAV
+  ═══════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">
+        <!-- Replace with: <img src="assets/images/logo.png" alt="MNT Logo" class="nav__logo-img" /> -->
+        <div class="nav__logo-placeholder">
+          <span class="nav__logo-icon">MNT</span>
+          <span class="nav__logo-sub">Haushaltsauflösung</span>
         </div>
-      </div>
-      <div class="nav-links">
-        <span class="nav-link">Leistungen</span>
-        <span class="nav-link">Über uns</span>
-        <span class="nav-link">Preise</span>
-        <span class="nav-link">FAQ</span>
-        <span class="nav-link">Kontakt</span>
-      </div>
-      <div class="nav-cta">Anfrage stellen</div>
+      </a>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#leistungen" class="nav__link">Leistungen</a></li>
+        <li><a href="#ueber-uns" class="nav__link">Über uns</a></li>
+        <li><a href="#preise" class="nav__link">Preise</a></li>
+        <li><a href="#faq" class="nav__link">FAQ</a></li>
+        <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+      </ul>
+
+      <a href="#kontakt" class="btn btn--primary nav__cta">Anfrage stellen</a>
+
+      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+  </header>
 
-    <!-- HERO -->
-    <div class="hero-a">
-      <div class="hero-a-content">
-        <div class="hero-tag">Bremen & Niedersachsen</div>
-        <div class="hero-headline">
-          Professionelle<br>Haushalts&shy;<wbr><span>auflösung</span>
-        </div>
-        <div class="hero-sub">Schnell, diskret und zum Festpreis. Wir kümmern uns um alles — von der Entrümpelung bis zur Entsorgung.</div>
-        <div class="hero-actions">
-          <div class="btn-primary">Kostenlose Anfrage <span>→</span></div>
-          <div class="btn-ghost">Leistungen ansehen <span>↓</span></div>
-        </div>
-      </div>
-      <div class="hero-a-image">
-        <img src="uploads/Logo.jpeg" alt="MNT Transporter">
-      </div>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-item">Kostenlose Beratung</div>
-      <div class="trust-item">Festpreisgarantie</div>
-      <div class="trust-item">Schnelle Terminvergabe</div>
-      <div class="trust-item">Über 500 Aufträge</div>
-      <div class="trust-item">Diskret & zuverlässig</div>
-    </div>
-
-    <!-- LEISTUNGEN -->
-    <div class="services-section">
-      <div class="section-header">
-        <div class="section-eyebrow">Leistungen</div>
-        <div class="section-title">Was wir für Sie tun</div>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-num">01</div>
-          <div class="service-title">Haushaltsauflösung</div>
-          <div class="service-desc">Komplette Räumung von Wohnungen, Häusern und Gewerberäumen — besenrein übergeben.</div>
-          <div class="service-link">Mehr erfahren →</div>
-        </div>
-        <div class="service-card">
-          <div class="service-num">02</div>
-          <div class="service-title">Entrümpelung</div>
-          <div class="service-desc">Keller, Dachboden, Garagen und Lagerräume — wir schaffen Platz, schnell und gründlich.</div>
-          <div class="service-link">Mehr erfahren →</div>
-        </div>
-        <div class="service-card">
-          <div class="service-num">03</div>
-          <div class="service-title">Demontage</div>
-          <div class="service-desc">Küchen, Einbauschränke, Möbel — fachgerecht zerlegt und abtransportiert.</div>
-          <div class="service-link">Mehr erfahren →</div>
-        </div>
-        <div class="service-card">
-          <div class="service-num">04</div>
-          <div class="service-title">Sperrmüll-Entsorgung</div>
-          <div class="service-desc">Abtransport und fachgerechte Entsorgung — umweltbewusst und ordnungsgemäß.</div>
-          <div class="service-link">Mehr erfahren →</div>
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero__bg"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="hero__region">— Bremen & Niedersachsen</p>
+        <h1 class="hero__title">
+          Professionelle<br />
+          <span class="hero__title--accent">Haushalts&shy;auflösung</span>
+        </h1>
+        <p class="hero__sub">
+          Schnell, diskret und zum Festpreis. Wir kümmern uns um alles — von der Entrümpelung bis zur Entsorgung.
+        </p>
+        <div class="hero__actions">
+          <a href="#kontakt" class="btn btn--primary btn--lg">Kostenlose Anfrage →</a>
+          <a href="#leistungen" class="btn btn--ghost btn--lg">Leistungen ansehen ↓</a>
         </div>
       </div>
-    </div>
-
-    <!-- ÜBER UNS -->
-    <div class="about-section">
-      <div class="about-stats">
-        <div class="stat-item">
-          <div class="stat-num">500+</div>
-          <div class="stat-label">Abgeschlossene Aufträge</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-num">5,0 ★</div>
-          <div class="stat-label">Kundenbewertung</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-num">24h</div>
-          <div class="stat-label">Reaktionszeit</div>
-        </div>
-      </div>
-      <div class="about-content">
-        <div class="section-eyebrow">Über uns</div>
-        <div class="about-title">Ihr verlässlicher Partner in Bremen & Niedersachsen</div>
-        <div class="about-text">Wir stehen für schnelle, diskrete und professionelle Haushaltsauflösungen. Unser erfahrenes Team kommt pünktlich, arbeitet sorgfältig und hinterlässt alles besenrein. Mit uns erhalten Sie einen transparenten Festpreis — keine versteckten Kosten.</div>
-        <div class="about-link">Unser Team kennenlernen →</div>
-      </div>
-    </div>
-
-    <!-- PREISE -->
-    <div class="prices-section">
-      <div class="section-header">
-        <div class="section-eyebrow">Preise</div>
-        <div class="section-title">Transparent & fair</div>
-      </div>
-      <div class="prices-grid">
-        <div class="price-card">
-          <div class="price-tier">Klein</div>
-          <div class="price-amount">ab 150 €</div>
-          <div class="price-unit">Festpreis nach Besichtigung</div>
-          <div class="price-divider"></div>
-          <div class="price-features">1-Zimmer Wohnung<br>Keller oder Dachboden<br>Einfache Entrümpelung</div>
-          <div class="price-cta">Anfragen</div>
-        </div>
-        <div class="price-card featured">
-          <div class="price-tier">Standard ★</div>
-          <div class="price-amount">ab 350 €</div>
-          <div class="price-unit">Inkl. Entsorgungsnachweis</div>
-          <div class="price-divider"></div>
-          <div class="price-features">2–3 Zimmer Wohnung<br>Inkl. Demontage<br>Inkl. Entsorgung</div>
-          <div class="price-cta">Anfragen</div>
-        </div>
-        <div class="price-card">
-          <div class="price-tier">Groß</div>
-          <div class="price-amount">Auf Anfrage</div>
-          <div class="price-unit">Individuelle Kalkulation</div>
-          <div class="price-divider"></div>
-          <div class="price-features">4+ Zimmer / Haus<br>Gewerbeobjekte<br>Sonderprojekte</div>
-          <div class="price-cta">Anfragen</div>
-        </div>
-      </div>
-      <div class="prices-note">Alle Preise sind Richtwerte. Verbindliche Angebote nach kostenloser Besichtigung.</div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="faq-section">
-      <div class="section-header">
-        <div class="section-eyebrow">FAQ</div>
-        <div class="section-title">Häufige Fragen</div>
-      </div>
-      <div class="faq-grid">
-        <div class="faq-item">
-          <div class="faq-q">Wie schnell können Sie kommen? <span class="faq-icon">−</span></div>
-          <div class="faq-answer">In der Regel bereits am nächsten Werktag. Für dringende Fälle versuchen wir auch kurzfristige Termine zu ermöglichen.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Was kostet eine Haushaltsauflösung? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Was passiert mit verwertbaren Gegenständen? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Sind Sie versichert? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Arbeiten Sie auch in Niedersachsen? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Wie läuft eine Auflösung ab? <span class="faq-icon">+</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- KONTAKT -->
-    <div class="contact-section">
-      <div class="contact-left">
-        <div class="section-eyebrow" style="color: var(--teal-light);">Kontakt</div>
-        <div class="contact-title">Kostenlose<br>Anfrage stellen</div>
-        <div class="contact-sub">Wir antworten innerhalb von 24 Stunden.</div>
-        <div class="contact-info">
-          <div class="contact-info-item">
-            <div class="contact-info-icon">📞</div>
-            +49 152 29268427
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-info-icon">✉</div>
-            info@mnt-haushaltsaufloesung.de
-          </div>
-          <div class="contact-info-item">
-            <div class="contact-info-icon">📍</div>
-            Bremen & Niedersachsen
+      <div class="hero__visual">
+        <!-- Replace with your van image: <img src="assets/images/van.png" alt="MNT Fahrzeug" class="hero__van" /> -->
+        <div class="hero__van-placeholder">
+          <div class="van-mock">
+            <div class="van-mock__body"></div>
+            <div class="van-mock__label">MNT</div>
+            <div class="van-mock__wheel van-mock__wheel--1"></div>
+            <div class="van-mock__wheel van-mock__wheel--2"></div>
           </div>
         </div>
       </div>
-      <div class="contact-right">
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+      <div class="container trust-bar__inner">
+        <span class="trust-item">✓ Kostenlose Beratung</span>
+        <span class="trust-item">✓ Festpreisgarantie</span>
+        <span class="trust-item">✓ Schnelle Terminvergabe</span>
+        <span class="trust-item">✓ Über 500 Aufträge</span>
+        <span class="trust-item">✓ Diskret & zuverlässig</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       LEISTUNGEN
+  ═══════════════════════════════════════════ -->
+  <section class="leistungen section" id="leistungen">
+    <div class="container">
+      <p class="section__label">— Leistungen</p>
+      <h2 class="section__title">Was wir für Sie tun</h2>
+
+      <div class="leistungen__grid">
+
+        <div class="leistung-card" data-num="01">
+          <h3 class="leistung-card__title">Haushaltsauflösung</h3>
+          <p class="leistung-card__text">Komplette Räumung von Wohnungen, Häusern und Gewerberäumen — besenrein übergeben.</p>
+          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
+        </div>
+
+        <div class="leistung-card" data-num="02">
+          <h3 class="leistung-card__title">Entrümpelung</h3>
+          <p class="leistung-card__text">Keller, Dachboden, Garagen und Lagerräume — wir schaffen Platz, schnell und gründlich.</p>
+          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
+        </div>
+
+        <div class="leistung-card" data-num="03">
+          <h3 class="leistung-card__title">Demontage</h3>
+          <p class="leistung-card__text">Küchen, Einbauschränke, Möbel — fachgerecht zerlegt und abtransportiert.</p>
+          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
+        </div>
+
+        <div class="leistung-card" data-num="04">
+          <h3 class="leistung-card__title">Sperrmüll-Entsorgung</h3>
+          <p class="leistung-card__text">Abtransport und fachgerechte Entsorgung — umweltbewusst und ordnungsgemäß.</p>
+          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ÜBER UNS
+  ═══════════════════════════════════════════ -->
+  <section class="ueber section" id="ueber-uns">
+    <div class="ueber__stats">
+      <div class="stat-item">
+        <span class="stat-item__num">500+</span>
+        <span class="stat-item__label">Abgeschlossene Aufträge</span>
+      </div>
+      <div class="stat-item__divider"></div>
+      <div class="stat-item">
+        <span class="stat-item__num">5,0 ★</span>
+        <span class="stat-item__label">Kundenbewertung</span>
+      </div>
+      <div class="stat-item__divider"></div>
+      <div class="stat-item">
+        <span class="stat-item__num">24h</span>
+        <span class="stat-item__label">Reaktionszeit</span>
+      </div>
+    </div>
+
+    <div class="ueber__content">
+      <p class="section__label">— Über uns</p>
+      <h2 class="section__title">Ihr verlässlicher Partner in Bremen & Niedersachsen</h2>
+      <p class="ueber__text">
+        Wir stehen für schnelle, diskrete und professionelle Haushaltsauflösungen. Unser erfahrenes Team kommt pünktlich, arbeitet sorgfältig und hinterlässt alles besenrein. Mit uns erhalten Sie einen transparenten Festpreis — keine versteckten Kosten.
+      </p>
+      <a href="#kontakt" class="btn btn--outline">Unser Team kennenlernen →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PREISE
+  ═══════════════════════════════════════════ -->
+  <section class="preise section" id="preise">
+    <div class="container">
+      <p class="section__label">— Preise</p>
+      <h2 class="section__title">Transparent & fair</h2>
+
+      <div class="preise__grid">
+
+        <div class="preis-card">
+          <span class="preis-card__size">Klein</span>
+          <div class="preis-card__price">ab 150 €</div>
+          <p class="preis-card__note">Festpreis nach Besichtigung</p>
+          <ul class="preis-card__list">
+            <li>1-Zimmer Wohnung</li>
+            <li>Keller oder Dachboden</li>
+            <li>Einfache Entrümpelung</li>
+          </ul>
+          <a href="#kontakt" class="btn btn--outline btn--full">Anfragen</a>
+        </div>
+
+        <div class="preis-card preis-card--featured">
+          <span class="preis-card__size">Standard ★</span>
+          <div class="preis-card__price">ab 350 €</div>
+          <p class="preis-card__note">Inkl. Entsorgungsnachweis</p>
+          <ul class="preis-card__list">
+            <li>2–3 Zimmer Wohnung</li>
+            <li>Inkl. Demontage</li>
+            <li>Inkl. Entsorgung</li>
+          </ul>
+          <a href="#kontakt" class="btn btn--primary btn--full">Anfragen</a>
+        </div>
+
+        <div class="preis-card">
+          <span class="preis-card__size">Groß</span>
+          <div class="preis-card__price preis-card__price--anfrage">Auf Anfrage</div>
+          <p class="preis-card__note">Individuelle Kalkulation</p>
+          <ul class="preis-card__list">
+            <li>4+ Zimmer / Haus</li>
+            <li>Gewerbeobjekte</li>
+            <li>Sonderprojekte</li>
+          </ul>
+          <a href="#kontakt" class="btn btn--outline btn--full">Anfragen</a>
+        </div>
+
+      </div>
+
+      <p class="preise__disclaimer">Alle Preise sind Richtwerte. Verbindliche Angebote nach kostenloser Besichtigung.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════════ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <p class="section__label">— FAQ</p>
+      <h2 class="section__title">Häufige Fragen</h2>
+
+      <div class="faq__grid">
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Wie schnell können Sie kommen?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>In der Regel bereits am nächsten Werktag. Für dringende Fälle versuchen wir auch kurzfristige Termine zu ermöglichen.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Was kostet eine Haushaltsauflösung?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>Die Kosten hängen vom Umfang ab. Kleine Entrümpelungen starten ab 150 €. Gerne erstellen wir Ihnen nach einer kostenlosen Besichtigung ein verbindliches Festpreisangebot.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Was passiert mit verwertbaren Gegenständen?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>Verwertbare Gegenstände werden von uns weiterverkauft oder gespendet. Dies kann den Preis für Sie reduzieren — sprechen Sie uns darauf an.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Sind Sie versichert?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>Ja, wir sind vollständig haftpflichtversichert. Ihre Immobilie und Ihr Eigentum sind bei uns in sicheren Händen.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Arbeiten Sie auch in Niedersachsen?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>Ja, wir sind in Bremen und dem gesamten Umland in Niedersachsen tätig — unter anderem in Delmenhorst, Verden, Achim und Umgebung.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__q" aria-expanded="false">
+            Wie läuft eine Auflösung ab?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__a">
+            <p>1. Kostenlose Besichtigung & Festpreisangebot → 2. Terminvereinbarung → 3. Durchführung → 4. Besenreine Übergabe. Einfach, transparent, stressfrei.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       KONTAKT
+  ═══════════════════════════════════════════ -->
+  <section class="kontakt" id="kontakt">
+    <div class="kontakt__info">
+      <p class="section__label section__label--light">— Kontakt</p>
+      <h2 class="kontakt__title">Kostenlose Anfrage stellen</h2>
+      <p class="kontakt__sub">Wir antworten innerhalb von 24 Stunden.</p>
+
+      <div class="kontakt__details">
+        <a href="tel:+4915229268427" class="kontakt__detail-item">
+          <span class="kontakt__detail-icon">📞</span>
+          <span>+49 152 29268427</span>
+        </a>
+        <a href="mailto:info@mnt-haushaltsaufloesung.de" class="kontakt__detail-item">
+          <span class="kontakt__detail-icon">✉️</span>
+          <span>info@mnt-haushaltsaufloesung.de</span>
+        </a>
+        <div class="kontakt__detail-item">
+          <span class="kontakt__detail-icon">📍</span>
+          <span>Bremen & Niedersachsen</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="kontakt__form-wrap">
+      <!-- Netlify Form -->
+      <form
+        name="anfrage"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="kontakt__form"
+        id="kontaktForm"
+      >
+        <!-- Honeypot field (hidden from humans) -->
+        <p hidden><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
+        <input type="hidden" name="form-name" value="anfrage" />
+
         <div class="form-row">
-          <div class="form-field">
-            <div class="form-label">Name</div>
-            <div class="form-input">Max Mustermann</div>
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Max Mustermann" required />
           </div>
-          <div class="form-field">
-            <div class="form-label">Telefon</div>
-            <div class="form-input focused">+49 ...</div>
-          </div>
-        </div>
-        <div class="form-field">
-          <div class="form-label">E-Mail</div>
-          <div class="form-input"></div>
-        </div>
-        <div class="form-field">
-          <div class="form-label">Ihre Nachricht</div>
-          <div class="form-textarea"></div>
-        </div>
-        <button class="form-submit">Anfrage absenden →</button>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="site-footer">
-      <div class="footer-brand">MNT</div>
-      <div class="footer-links">
-        <span>Impressum</span>
-        <span>Datenschutz</span>
-        <span>© 2024 MNT Haushaltsauflösung</span>
-      </div>
-    </div>
-
-  </div><!-- .site -->
-  <div class="scroll-hint">Variante A · Klassisch & klar</div>
-</div>
-
-
-<!-- ═══════════════════════════════ VARIANT B ═══════════════════════════════ -->
-<div class="variant" id="var-b">
-  <div class="site">
-
-    <!-- NAV B - darker minimal -->
-    <nav class="site-nav" style="background: var(--navy); border-bottom-color: #2a3f52;">
-      <div class="nav-brand">
-        <div class="nav-brand-mark" style="background: var(--teal);">MNT</div>
-        <div>
-          <div class="nav-brand-text" style="color:white;">MNT Haushaltsauflösung</div>
-          <div class="nav-brand-sub">Bremen · Niedersachsen</div>
-        </div>
-      </div>
-      <div class="nav-links">
-        <span class="nav-link" style="color:#5a7a8a;">Leistungen</span>
-        <span class="nav-link" style="color:#5a7a8a;">Preise</span>
-        <span class="nav-link" style="color:#5a7a8a;">FAQ</span>
-        <span class="nav-link" style="color:#5a7a8a;">Kontakt</span>
-      </div>
-      <div class="nav-cta" style="background:transparent; border:1px solid var(--teal); color:var(--teal-light);">+49 152 29268427</div>
-    </nav>
-
-    <!-- HERO B -->
-    <div class="hero-b">
-      <div class="hero-b-bg-text">MNT</div>
-      <div class="hero-b-content">
-        <div class="hero-tag">Bremen & Niedersachsen</div>
-        <div class="hero-b-headline">
-          HAUSHALTS-<br>AUFLÖSUNG<br><span class="accent">& MEHR.</span>
-        </div>
-        <div class="hero-b-sub">Schnell, sauber, zum Festpreis. Wir räumen auf — Sie lehnen sich zurück. Entrümpelung, Demontage & Sperrmüll aus einer Hand.</div>
-        <div class="hero-b-actions">
-          <div class="btn-primary" style="font-size:15px; padding:16px 36px;">Kostenlose Anfrage →</div>
-          <div class="btn-ghost" style="font-size:14px; color:#4a6a7a;">Leistungen ↓</div>
-        </div>
-      </div>
-      <div class="hero-b-right">
-        <div class="hero-b-truck">
-          <img src="uploads/Logo.jpeg" alt="MNT Transporter">
-        </div>
-        <div class="hero-b-callout">
-          <div class="callout-stat">
-            <div class="callout-num">500+</div>
-            <div class="callout-label">Aufträge</div>
-          </div>
-          <div class="callout-stat">
-            <div class="callout-num">5,0 ★</div>
-            <div class="callout-label">Bewertung</div>
-          </div>
-          <div class="callout-stat">
-            <div class="callout-num">24h</div>
-            <div class="callout-label">Reaktionszeit</div>
-          </div>
-          <div class="callout-stat">
-            <div class="callout-num">100%</div>
-            <div class="callout-label">Festpreis</div>
+          <div class="form-group">
+            <label class="form-label" for="telefon">Telefon</label>
+            <input class="form-input" type="tel" id="telefon" name="telefon" placeholder="+49 ..." />
           </div>
         </div>
-      </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">E-Mail</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="ihre@email.de" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="nachricht">Ihre Nachricht</label>
+          <textarea class="form-input form-textarea" id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen..." rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--full form-submit">
+          Anfrage absenden →
+        </button>
+
+        <div class="form-success" id="formSuccess">
+          ✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden.
+        </div>
+      </form>
     </div>
+  </section>
 
-    <!-- LEISTUNGEN B -->
-    <div class="services-b">
-      <div class="section-header">
-        <div class="section-eyebrow">Leistungen</div>
-        <div class="section-title">Was wir für Sie tun</div>
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__logo">
+        <!-- Replace with: <img src="assets/images/logo.png" alt="MNT" class="footer__logo-img" /> -->
+        <span class="footer__logo-text">MNT</span>
       </div>
-      <div class="services-b-list">
-        <div class="service-row">
-          <div class="service-row-num">01</div>
-          <div class="service-row-name">Haushaltsauflösung</div>
-          <div class="service-row-desc">Komplette Räumung von Wohnungen, Häusern und Gewerberäumen. Besenrein übergeben, kein Aufwand für Sie.</div>
-          <div class="service-row-link">Details →</div>
-        </div>
-        <div class="service-row">
-          <div class="service-row-num">02</div>
-          <div class="service-row-name">Entrümpelung</div>
-          <div class="service-row-desc">Keller, Dachboden, Garagen und Lagerräume — wir schaffen Platz schnell und gründlich.</div>
-          <div class="service-row-link">Details →</div>
-        </div>
-        <div class="service-row">
-          <div class="service-row-num">03</div>
-          <div class="service-row-name">Demontage</div>
-          <div class="service-row-desc">Küchen, Einbauschränke und Möbel — fachgerecht zerlegt und sauber abtransportiert.</div>
-          <div class="service-row-link">Details →</div>
-        </div>
-        <div class="service-row">
-          <div class="service-row-num">04</div>
-          <div class="service-row-name">Sperrmüll-Entsorgung</div>
-          <div class="service-row-desc">Abtransport und fachgerechte Entsorgung — umweltbewusst und ordnungsgemäß dokumentiert.</div>
-          <div class="service-row-link">Details →</div>
-        </div>
+      <div class="footer__links">
+        <a href="impressum.html" class="footer__link">Impressum</a>
+        <a href="datenschutz.html" class="footer__link">Datenschutz</a>
       </div>
+      <p class="footer__copy">© 2024 MNT Haushaltsauflösung</p>
     </div>
+  </footer>
 
-    <!-- PREISRECHNER B -->
-    <div class="calc-section">
-      <div>
-        <div class="section-eyebrow">Preise</div>
-        <div class="calc-title">Kosten schnell berechnen</div>
-        <div class="calc-controls">
-          <div>
-            <div class="calc-label">Art der Leistung</div>
-            <div class="calc-chips">
-              <div class="calc-chip active">Haushaltsauflösung</div>
-              <div class="calc-chip">Entrümpelung</div>
-              <div class="calc-chip">Demontage</div>
-            </div>
-          </div>
-          <div>
-            <div class="calc-label">Größe in m²</div>
-            <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted); margin-bottom:8px;">
-              <span>20 m²</span><span style="font-weight:700; color:var(--navy);">60 m²</span><span>200 m²</span>
-            </div>
-            <div class="calc-slider-track">
-              <div class="calc-slider-fill"></div>
-              <div class="calc-slider-thumb"></div>
-            </div>
-          </div>
-          <div>
-            <div class="calc-label">Anzahl Etagen</div>
-            <div class="calc-chips">
-              <div class="calc-chip active">1</div>
-              <div class="calc-chip">2</div>
-              <div class="calc-chip">3+</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="calc-result">
-        <div class="calc-result-label">Ihr Richtwert</div>
-        <div class="calc-result-price">350 €</div>
-        <div class="calc-result-note">Geschätzter Festpreis · verbindliches Angebot nach kostenloser Besichtigung</div>
-        <div class="calc-result-divider"></div>
-        <div class="calc-result-cta">Jetzt kostenlos anfragen →</div>
-      </div>
-    </div>
-
-    <!-- ÜBER UNS B - full width -->
-    <div style="background: var(--navy); padding: 80px 56px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
-      <div style="display:flex; flex-direction:column; gap:20px;">
-        <div class="section-eyebrow" style="color:var(--teal-light);">Über uns</div>
-        <div style="font-family:'Syne',sans-serif; font-size:32px; font-weight:700; color:white; line-height:1.1; letter-spacing:-0.5px;">Ihr Partner für saubere Lösungen in Bremen & Niedersachsen</div>
-        <div style="font-size:15px; color:#5a7a8a; line-height:1.75; font-weight:300;">Wir stehen für schnelle, diskrete und professionelle Haushaltsauflösungen. Unser Team kommt pünktlich, arbeitet sorgfältig und hinterlässt alles besenrein. Transparente Preise — keine Überraschungen.</div>
-        <div class="about-link" style="color:var(--teal-light);">Team kennenlernen →</div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#2a3f52;">
-        <div style="background:#152433; padding:32px; text-align:center;">
-          <div style="font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:var(--teal-light);">500+</div>
-          <div style="font-size:12px; color:#4a6a7a; margin-top:4px; text-transform:uppercase; letter-spacing:1px;">Aufträge</div>
-        </div>
-        <div style="background:#152433; padding:32px; text-align:center;">
-          <div style="font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:var(--teal-light);">5,0★</div>
-          <div style="font-size:12px; color:#4a6a7a; margin-top:4px; text-transform:uppercase; letter-spacing:1px;">Bewertung</div>
-        </div>
-        <div style="background:#152433; padding:32px; text-align:center;">
-          <div style="font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:var(--teal-light);">24h</div>
-          <div style="font-size:12px; color:#4a6a7a; margin-top:4px; text-transform:uppercase; letter-spacing:1px;">Reaktionszeit</div>
-        </div>
-        <div style="background:#152433; padding:32px; text-align:center;">
-          <div style="font-family:'Syne',sans-serif; font-size:40px; font-weight:800; color:var(--teal-light);">100%</div>
-          <div style="font-size:12px; color:#4a6a7a; margin-top:4px; text-transform:uppercase; letter-spacing:1px;">Festpreis</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAQ B -->
-    <div class="faq-section" style="background:white;">
-      <div class="section-header">
-        <div class="section-eyebrow">FAQ</div>
-        <div class="section-title">Häufige Fragen</div>
-      </div>
-      <div class="faq-grid">
-        <div class="faq-item">
-          <div class="faq-q">Wie schnell können Sie kommen? <span class="faq-icon">−</span></div>
-          <div class="faq-answer">In der Regel bereits am nächsten Werktag. Für dringende Fälle versuchen wir auch kurzfristige Termine zu ermöglichen.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Was kostet eine Haushaltsauflösung? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Was passiert mit verwertbaren Sachen? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Sind Sie versichert? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Arbeiten Sie in ganz Niedersachsen? <span class="faq-icon">+</span></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Wie läuft eine Auflösung ab? <span class="faq-icon">+</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- KONTAKT B -->
-    <div style="background:var(--teal); padding:48px 56px; text-align:center;">
-      <div style="font-family:'Syne',sans-serif; font-size:36px; font-weight:800; color:white; letter-spacing:-0.5px; margin-bottom:8px;">Bereit? Wir melden uns innerhalb von 24h.</div>
-      <div style="font-size:15px; color:rgba(255,255,255,0.6); margin-bottom:28px;">Kostenlose Beratung · Keine Verpflichtung · Festpreis</div>
-      <div style="display:flex; gap:12px; justify-content:center; max-width:700px; margin:0 auto;">
-        <div class="form-input" style="flex:1; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); color:white;">Name</div>
-        <div class="form-input" style="flex:1; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.2); color:white;">Telefon / E-Mail</div>
-        <div style="background:var(--navy); color:white; padding:13px 28px; font-size:14px; font-weight:600; white-space:nowrap; cursor:pointer; font-family:'DM Sans',sans-serif;">Anfragen →</div>
-      </div>
-      <div style="margin-top:20px; font-size:13px; color:rgba(255,255,255,0.5);">📞 +49 152 29268427 · ✉ info@mnt-haushaltsaufloesung.de</div>
-    </div>
-
-    <!-- FOOTER B -->
-    <div class="site-footer">
-      <div class="footer-brand">MNT</div>
-      <div class="footer-links">
-        <span>Impressum</span>
-        <span>Datenschutz</span>
-        <span>© 2024 MNT Haushaltsauflösung</span>
-      </div>
-    </div>
-
-  </div><!-- .site -->
-  <div class="scroll-hint">Variante B · Bold & Modern</div>
-</div>
-
-
-<!-- TWEAKS PANEL -->
-<div id="tweaks-panel">
-  <h3>Tweaks</h3>
-  <div class="tweak-row">
-    <div class="tweak-label">Akzentfarbe</div>
-    <select onchange="setTeal(this.value)">
-      <option value="#2e7d6e">Teal (Standard)</option>
-      <option value="#1e6fa0">Blau</option>
-      <option value="#7d4e2e">Terrakotta</option>
-      <option value="#4e7d2e">Grün</option>
-    </select>
-  </div>
-  <div class="tweak-row">
-    <div class="tweak-label">Nav-Stil</div>
-    <select onchange="setNavStyle(this.value)">
-      <option value="white">Hell</option>
-      <option value="dark">Dunkel</option>
-    </select>
-  </div>
-</div>
-
-<script>
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "teal": "#2e7d6e",
-  "navStyle": "white"
-}/*EDITMODE-END*/;
-
-function showVariant(v) {
-  document.querySelectorAll('.variant').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.selector-tab').forEach(el => el.classList.remove('active'));
-  document.getElementById('var-' + v).classList.add('active');
-  const idx = v === 'a' ? 0 : 1;
-  document.querySelectorAll('.selector-tab')[idx].classList.add('active');
-  localStorage.setItem('mnt_variant', v);
-}
-
-// Restore variant from localStorage
-const saved = localStorage.getItem('mnt_variant');
-if (saved) showVariant(saved);
-
-function setTeal(val) {
-  document.documentElement.style.setProperty('--teal', val);
-  document.documentElement.style.setProperty('--teal-light', val);
-  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{teal:val}}, '*');
-}
-function setNavStyle(val) {
-  const navA = document.querySelector('#var-a .site-nav');
-  if (val === 'dark') {
-    navA.style.background = 'var(--navy)';
-    navA.style.borderBottomColor = '#2a3f52';
-    navA.querySelectorAll('.nav-link').forEach(el => el.style.color = '#5a7a8a');
-    navA.querySelector('.nav-brand-text').style.color = 'white';
-  } else {
-    navA.style.background = 'white';
-    navA.style.borderBottomColor = '';
-    navA.querySelectorAll('.nav-link').forEach(el => el.style.color = '');
-    navA.querySelector('.nav-brand-text').style.color = '';
-  }
-  window.parent.postMessage({type:'__edit_mode_set_keys', edits:{navStyle:val}}, '*');
-}
-
-// Tweaks protocol
-window.addEventListener('message', e => {
-  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').style.display = 'block';
-  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').style.display = 'none';
-});
-window.parent.postMessage({type:'__edit_mode_available'}, '*');
-</script>
-
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
