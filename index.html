@@ -1,385 +1,912 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MNT Haushaltsauflösung – Professionelle Entrümpelung in Bremen & Niedersachsen. Schnell, diskret, zum Festpreis." />
-  <title>MNT Haushaltsauflösung – Bremen & Niedersachsen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNT-Haushaltsauflösung — Entrümpelung & Auflösung in Bremen</title>
+  <meta name="description" content="Professionelle Haushaltsauflösung und Entrümpelung in Bremen & Niedersachsen. Festpreisgarantie, kostenlose Beratung, über 500 Aufträge. Jetzt anfragen!">
 
-  <!-- Netlify Identity (optional, for CMS) -->
-  <!-- <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/Logo.png">
+  <link rel="apple-touch-icon" href="assets/images/Logo.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-
-  <!-- Netlify Hidden Form (required for form detection on deploy) -->
-  <form name="anfrage" netlify netlify-honeypot="bot-field" hidden>
-    <input type="text" name="name" />
-    <input type="tel" name="telefon" />
-    <input type="email" name="email" />
-    <textarea name="nachricht"></textarea>
-  </form>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       HEADER / NAV
-  ═══════════════════════════════════════════ -->
-  <header class="header" id="header">
-    <nav class="nav container">
-      <a href="#" class="nav__logo">
-        <img src="assets/images/logo_gross.jpeg" alt="MNT Haushaltsauflösung" class="nav__logo-img" />
+<!-- ============================================================
+     NAVIGATION — heller Hintergrund mit Logo-Bild
+     ============================================================ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+
+      <!-- Logo + Firmenname -->
+      <a href="#" class="nav-logo" aria-label="MNT-Haushaltsauflösung — Startseite">
+        <img src="assets/images/Logo.png" alt="MNT-Haushaltsauflösung Logo">
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">MNT</span>
+          <span class="nav-logo-sub">Haushaltsauflösung</span>
+        </div>
       </a>
 
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#leistungen" class="nav__link">Leistungen</a></li>
-        <li><a href="#ueber-uns" class="nav__link">Über uns</a></li>
-        <li><a href="#preise" class="nav__link">Preise</a></li>
-        <li><a href="#faq" class="nav__link">FAQ</a></li>
-        <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+      <ul class="nav-links">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#preisrechner">Anfrage</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
       </ul>
 
-      <a href="#kontakt" class="btn btn--primary nav__cta">Anfrage stellen</a>
+      <button onclick="openModal()" class="btn btn--primary nav-cta">Anfrage stellen</button>
 
-      <button class="nav__burger" id="navBurger" aria-label="Menü öffnen">
+      <!-- Hamburger für Mobile -->
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
       </button>
-    </nav>
-  </header>
-
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════ -->
-  <section class="hero" id="home">
-    <div class="hero__bg"></div>
-    <div class="container hero__inner">
-      <div class="hero__content">
-        <p class="hero__region">— Bremen & Niedersachsen</p>
-        <h1 class="hero__title">
-          Professionelle<br />
-          <span class="hero__title--accent">Haushalts&shy;auflösung</span>
-        </h1>
-        <p class="hero__sub">
-          Schnell, diskret und zum Festpreis. Wir kümmern uns um alles — von der Entrümpelung bis zur Entsorgung.
-        </p>
-        <div class="hero__actions">
-          <a href="#kontakt" class="btn btn--primary btn--lg">Kostenlose Anfrage →</a>
-          <a href="#leistungen" class="btn btn--ghost btn--lg">Leistungen ansehen ↓</a>
-        </div>
-      </div>
-      <div class="hero__visual">
-        <!-- Replace with your van image: <img src="assets/images/van.png" alt="MNT Fahrzeug" class="hero__van" /> -->
-        <div class="hero__van-placeholder">
-          <div class="van-mock">
-            <div class="van-mock__body"></div>
-            <div class="van-mock__label">MNT</div>
-            <div class="van-mock__wheel van-mock__wheel--1"></div>
-            <div class="van-mock__wheel van-mock__wheel--2"></div>
-          </div>
-        </div>
-      </div>
     </div>
+  </div>
+</nav>
 
-    <!-- Trust bar -->
-    <div class="trust-bar">
-      <div class="container trust-bar__inner">
-        <span class="trust-item">✓ Kostenlose Beratung</span>
-        <span class="trust-item">✓ Festpreisgarantie</span>
-        <span class="trust-item">✓ Schnelle Terminvergabe</span>
-        <span class="trust-item">✓ Über 500 Aufträge</span>
-        <span class="trust-item">✓ Diskret & zuverlässig</span>
+<!-- Mobile Fullscreen-Menü -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#leistungen" class="mobile-link">Leistungen</a>
+  <a href="#preisrechner" class="mobile-link">Anfrage</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#kontakt" class="mobile-link">Kontakt</a>
+  <a href="#beratung" class="btn btn--primary">Anfrage stellen</a>
+</div>
+
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <!-- ── LINKS: Text + Features + CTAs ── -->
+    <div class="hero-content">
+
+      <!-- Bewertungs-Badge -->
+      <div class="hero-rating reveal">
+        <span class="hero-rating-stars">⭐⭐⭐⭐⭐</span>
+        <span class="hero-rating-text">5,0 · Google Bewertungen</span>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════
-       LEISTUNGEN
-  ═══════════════════════════════════════════ -->
-  <section class="leistungen section" id="leistungen">
-    <div class="container">
-      <p class="section__label">— Leistungen</p>
-      <h2 class="section__title">Was wir für Sie tun</h2>
+      <h1 class="hero-h1 reveal reveal-delay-1">
+        Haushaltsauflösung &amp;<br>
+        Entrümpelung in Bremen<br>
+        <em>und Umzu</em>
+      </h1>
 
-      <div class="leistungen__grid">
-
-        <div class="leistung-card" data-num="01">
-          <h3 class="leistung-card__title">Haushaltsauflösung</h3>
-          <p class="leistung-card__text">Komplette Räumung von Wohnungen, Häusern und Gewerberäumen — besenrein übergeben.</p>
-          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
-        </div>
-
-        <div class="leistung-card" data-num="02">
-          <h3 class="leistung-card__title">Entrümpelung</h3>
-          <p class="leistung-card__text">Keller, Dachboden, Garagen und Lagerräume — wir schaffen Platz, schnell und gründlich.</p>
-          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
-        </div>
-
-        <div class="leistung-card" data-num="03">
-          <h3 class="leistung-card__title">Demontage</h3>
-          <p class="leistung-card__text">Küchen, Einbauschränke, Möbel — fachgerecht zerlegt und abtransportiert.</p>
-          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
-        </div>
-
-        <div class="leistung-card" data-num="04">
-          <h3 class="leistung-card__title">Sperrmüll-Entsorgung</h3>
-          <p class="leistung-card__text">Abtransport und fachgerechte Entsorgung — umweltbewusst und ordnungsgemäß.</p>
-          <a href="#kontakt" class="leistung-card__link">Mehr erfahren →</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       ÜBER UNS
-  ═══════════════════════════════════════════ -->
-  <section class="ueber section" id="ueber-uns">
-    <div class="ueber__stats">
-      <div class="stat-item">
-        <span class="stat-item__num">500+</span>
-        <span class="stat-item__label">Abgeschlossene Aufträge</span>
-      </div>
-      <div class="stat-item__divider"></div>
-      <div class="stat-item">
-        <span class="stat-item__num">5,0 ★</span>
-        <span class="stat-item__label">Kundenbewertung</span>
-      </div>
-      <div class="stat-item__divider"></div>
-      <div class="stat-item">
-        <span class="stat-item__num">24h</span>
-        <span class="stat-item__label">Reaktionszeit</span>
-      </div>
-    </div>
-
-    <div class="ueber__content">
-      <p class="section__label">— Über uns</p>
-      <h2 class="section__title">Ihr verlässlicher Partner in Bremen & Niedersachsen</h2>
-      <p class="ueber__text">
-        Wir stehen für schnelle, diskrete und professionelle Haushaltsauflösungen. Unser erfahrenes Team kommt pünktlich, arbeitet sorgfältig und hinterlässt alles besenrein. Mit uns erhalten Sie einen transparenten Festpreis — keine versteckten Kosten.
+      <p class="hero-sub reveal reveal-delay-2">
+        Ihr zuverlässiger Partner in Bremen &amp; Niedersachsen für schnelle,
+        diskrete und fachgerechte Haushaltsauflösungen —
+        mit Festpreisgarantie &amp; Besenrein-Garantie.
       </p>
-      <a href="#kontakt" class="btn btn--outline">Unser Team kennenlernen →</a>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════
-       PREISE
-  ═══════════════════════════════════════════ -->
-  <section class="preise section" id="preise">
+      <!-- Feature-Grid (2 Spalten, Plus-Icons) -->
+      <div class="hero-features reveal reveal-delay-2">
+        <div class="hero-feature">
+          <span class="hero-feature-plus">+</span>
+          <span>Festpreisgarantie</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-plus">+</span>
+          <span>Keine versteckten Kosten</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-plus">+</span>
+          <span>Kostenlose Besichtigung</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-plus">+</span>
+          <span>Besenreine Übergabe</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-plus">+</span>
+          <span>Abwicklung innerhalb 24–48h</span>
+        </div>
+        <div class="hero-feature">
+          <span class="hero-feature-plus">+</span>
+          <span>100% Zufriedenheitsgarantie</span>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero-ctas reveal reveal-delay-3">
+        <button onclick="openModal()" class="btn btn--primary">Festpreis-Angebot anfordern →</button>
+        <a href="tel:+4915229268427" class="btn btn--ghost">📞 Jetzt anrufen</a>
+      </div>
+
+    </div>
+
+    <!-- ── RECHTS: Logo + Kontakt ── -->
+    <div class="hero-graphic reveal reveal-delay-2">
+      <div class="hero-contact-card">
+        <img src="assets/images/Logo_gross.jpeg" alt="MNT-Haushaltsauflösung" class="hero-logo-gross">
+        <div class="hero-contact-info">
+          <a href="tel:+4915229268427" class="hero-contact-line">
+            <span class="hero-contact-icon" style="font-size:1rem;">📞</span>
+            <span>+49 152 29268427</span>
+          </a>
+          <a href="mailto:info@mnt-haushaltsaufloesung.de" class="hero-contact-line">
+            <span class="hero-contact-icon" style="font-size:1.6rem;">✉</span>
+            <span>info@mnt-haushaltsaufloesung.de</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Trust-Bar -->
+  <div class="trust-bar">
     <div class="container">
-      <p class="section__label">— Preise</p>
-      <h2 class="section__title">Transparent & fair</h2>
-
-      <div class="preise__grid">
-
-        <div class="preis-card">
-          <span class="preis-card__size">Klein</span>
-          <div class="preis-card__price">ab 150 €</div>
-          <p class="preis-card__note">Festpreis nach Besichtigung</p>
-          <ul class="preis-card__list">
-            <li>1-Zimmer Wohnung</li>
-            <li>Keller oder Dachboden</li>
-            <li>Einfache Entrümpelung</li>
-          </ul>
-          <a href="#kontakt" class="btn btn--outline btn--full">Anfragen</a>
-        </div>
-
-        <div class="preis-card preis-card--featured">
-          <span class="preis-card__size">Standard ★</span>
-          <div class="preis-card__price">ab 350 €</div>
-          <p class="preis-card__note">Inkl. Entsorgungsnachweis</p>
-          <ul class="preis-card__list">
-            <li>2–3 Zimmer Wohnung</li>
-            <li>Inkl. Demontage</li>
-            <li>Inkl. Entsorgung</li>
-          </ul>
-          <a href="#kontakt" class="btn btn--primary btn--full">Anfragen</a>
-        </div>
-
-        <div class="preis-card">
-          <span class="preis-card__size">Groß</span>
-          <div class="preis-card__price preis-card__price--anfrage">Auf Anfrage</div>
-          <p class="preis-card__note">Individuelle Kalkulation</p>
-          <ul class="preis-card__list">
-            <li>4+ Zimmer / Haus</li>
-            <li>Gewerbeobjekte</li>
-            <li>Sonderprojekte</li>
-          </ul>
-          <a href="#kontakt" class="btn btn--outline btn--full">Anfragen</a>
-        </div>
-
-      </div>
-
-      <p class="preise__disclaimer">Alle Preise sind Richtwerte. Verbindliche Angebote nach kostenloser Besichtigung.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       FAQ
-  ═══════════════════════════════════════════ -->
-  <section class="faq section" id="faq">
-    <div class="container">
-      <p class="section__label">— FAQ</p>
-      <h2 class="section__title">Häufige Fragen</h2>
-
-      <div class="faq__grid">
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Wie schnell können Sie kommen?
-            <span class="faq-item__icon">+</span>
-          </button>
-          <div class="faq-item__a">
-            <p>In der Regel bereits am nächsten Werktag. Für dringende Fälle versuchen wir auch kurzfristige Termine zu ermöglichen.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Was kostet eine Haushaltsauflösung?
-            <span class="faq-item__icon">+</span>
-          </button>
-          <div class="faq-item__a">
-            <p>Die Kosten hängen vom Umfang ab. Kleine Entrümpelungen starten ab 150 €. Gerne erstellen wir Ihnen nach einer kostenlosen Besichtigung ein verbindliches Festpreisangebot.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Was passiert mit verwertbaren Gegenständen?
-            <span class="faq-item__icon">+</span>
-          </button>
-          <div class="faq-item__a">
-            <p>Verwertbare Gegenstände werden von uns weiterverkauft oder gespendet. Dies kann den Preis für Sie reduzieren — sprechen Sie uns darauf an.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Sind Sie versichert?
-            <span class="faq-item__icon">+</span>
-          </button>
-          <div class="faq-item__a">
-            <p>Ja, wir sind vollständig haftpflichtversichert. Ihre Immobilie und Ihr Eigentum sind bei uns in sicheren Händen.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Arbeiten Sie auch in Niedersachsen?
-            <span class="faq-item__icon">+</span>
-          </button>
-          <div class="faq-item__a">
-            <p>Ja, wir sind in Bremen und dem gesamten Umland in Niedersachsen tätig — unter anderem in Delmenhorst, Verden, Achim und Umgebung.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-item__q" aria-expanded="false">
-            Wie läuft eine Auflösung ab?
-            <span class="faq-item__icon">+</span>
-          </button>
-          <div class="faq-item__a">
-            <p>1. Kostenlose Besichtigung & Festpreisangebot → 2. Terminvereinbarung → 3. Durchführung → 4. Besenreine Übergabe. Einfach, transparent, stressfrei.</p>
-          </div>
-        </div>
-
+      <div class="trust-bar-inner">
+        <div class="trust-item">Kostenlose Beratung</div>
+        <div class="trust-item">Festpreisgarantie</div>
+        <div class="trust-item">Schnelle Terminvergabe</div>
+        <div class="trust-item">Über 500 Aufträge</div>
+        <div class="trust-item">Diskret &amp; zuverlässig</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════
-       KONTAKT
-  ═══════════════════════════════════════════ -->
-  <section class="kontakt" id="kontakt">
-    <div class="kontakt__info">
-      <p class="section__label section__label--light">— Kontakt</p>
-      <h2 class="kontakt__title">Kostenlose Anfrage stellen</h2>
-      <p class="kontakt__sub">Wir antworten innerhalb von 24 Stunden.</p>
 
-      <div class="kontakt__details">
-        <a href="tel:+4915229268427" class="kontakt__detail-item">
-          <span class="kontakt__detail-icon">📞</span>
-          <span>+49 152 29268427</span>
-        </a>
-        <a href="mailto:info@mnt-haushaltsaufloesung.de" class="kontakt__detail-item">
-          <span class="kontakt__detail-icon">✉️</span>
-          <span>info@mnt-haushaltsaufloesung.de</span>
-        </a>
-        <div class="kontakt__detail-item">
-          <span class="kontakt__detail-icon">📍</span>
-          <span>Bremen & Niedersachsen</span>
+<!-- ============================================================
+     LEISTUNGEN
+     ============================================================ -->
+<section id="leistungen" class="section section--light">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label label--light">Leistungen</span>
+      <h2>Was wir für Sie tun</h2>
+    </div>
+
+    <div class="leistungen-grid">
+      <div class="leistung-card reveal">
+        <div class="leistung-num">01</div>
+        <span class="leistung-icon">🏠</span>
+        <div class="leistung-title">Haushaltsauflösung</div>
+        <p class="leistung-text">Komplette Räumung von Wohnungen, Häusern und Gewerberäumen. Wir koordinieren alles — Sie müssen nur den Schlüssel abgeben.</p>
+      </div>
+
+      <div class="leistung-card reveal reveal-delay-1">
+        <div class="leistung-num">02</div>
+        <span class="leistung-icon">📦</span>
+        <div class="leistung-title">Entrümpelung</div>
+        <p class="leistung-text">Keller, Dachboden, Garagen und Lagerräume — wir räumen gründlich und fachgerecht, inklusive Entsorgung aller Materialien.</p>
+      </div>
+
+      <div class="leistung-card reveal reveal-delay-2">
+        <div class="leistung-num">03</div>
+        <span class="leistung-icon">🔧</span>
+        <div class="leistung-title">Demontage</div>
+        <p class="leistung-text">Küchen, Einbauschränke, Möbel — fachgerecht zerlegt und abtransportiert. Wände und Böden werden dabei geschont.</p>
+      </div>
+
+      <div class="leistung-card reveal reveal-delay-3">
+        <div class="leistung-num">04</div>
+        <span class="leistung-icon">⚒️</span>
+        <div class="leistung-title">Abbrucharbeiten</div>
+        <p class="leistung-text">Kontrollierter Rückbau und Abriss von Innenstrukturen. Trockenbau, Zwischenwände, Bodenbeläge — sauber und sicher.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABLAUF
+     ============================================================ -->
+<section id="ablauf" class="section section--dark noise-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label label--dark">Ablauf</span>
+      <h2 style="color:var(--white)">In 4 Schritten zu Ihrem Festpreis</h2>
+    </div>
+
+    <div class="ablauf-grid">
+      <div class="ablauf-step reveal">
+        <div class="ablauf-num">01</div>
+        <div class="ablauf-title">Anfrage stellen</div>
+        <p class="ablauf-text">Online oder per Telefon — unkompliziert und kostenlos.</p>
+      </div>
+      <div class="ablauf-step reveal reveal-delay-1">
+        <div class="ablauf-num">02</div>
+        <div class="ablauf-title">Kostenlose Besichtigung</div>
+        <p class="ablauf-text">Wir kommen zu Ihnen vor Ort und nehmen alles genau unter die Lupe.</p>
+      </div>
+      <div class="ablauf-step reveal reveal-delay-2">
+        <div class="ablauf-num">03</div>
+        <div class="ablauf-title">Festpreisangebot</div>
+        <p class="ablauf-text">Transparent, fair und ohne versteckte Kosten — schriftlich garantiert.</p>
+      </div>
+      <div class="ablauf-step reveal reveal-delay-3">
+        <div class="ablauf-num">04</div>
+        <div class="ablauf-title">Durchführung</div>
+        <p class="ablauf-text">Schnell, sauber, zuverlässig — wir hinterlassen besenreine Räume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PREISANFRAGE
+     Netlify-Formular mit Immobilien-Angaben → wir melden uns
+     ============================================================ -->
+<section id="preisrechner" class="section section--light">
+  <div class="container">
+    <div class="rechner-layout">
+
+      <!-- Intro-Text links -->
+      <div class="rechner-intro reveal">
+        <span class="label label--light">Kostenlose Anfrage</span>
+        <h2 style="margin-top:0.75rem; margin-bottom:1rem;">Preisanfrage stellen</h2>
+        <div class="divider-line"></div>
+        <p>Teilen Sie uns ein paar Details zu Ihrer Immobilie mit — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot bei Ihnen.</p>
+
+        <div class="rechner-trust">
+          <div class="rechner-trust-item">✓ Kostenlos &amp; unverbindlich</div>
+          <div class="rechner-trust-item">✓ Antwort innerhalb von 24 Stunden</div>
+          <div class="rechner-trust-item">✓ Festpreisgarantie</div>
+          <div class="rechner-trust-item">✓ Kein Spam</div>
+        </div>
+
+        <div class="rechner-contact-hint">
+          <p>Lieber direkt sprechen?</p>
+          <a href="tel:+4915229268427" class="rechner-contact-tel">📞 +49 152 29268427</a>
+          <a href="mailto:info@mnt-haushaltsaufloesung.de" class="rechner-contact-email">✉ info@mnt-haushaltsaufloesung.de</a>
+        </div>
+      </div>
+
+      <!-- Formular rechts -->
+      <div class="reveal reveal-delay-1">
+        <div class="anfrage-card">
+          <!--
+            NETLIFY FORMS — Preisanfrage
+            Submissions erscheinen im Netlify-Dashboard unter "Forms → preisanfrage"
+            action="/danke.html" leitet nach Submit weiter
+          -->
+          <form
+            name="preisanfrage"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-feld"
+            action="/danke.html"
+          >
+            <input type="hidden" name="form-name" value="preisanfrage">
+            <p style="display:none;"><label>Nicht ausfüllen: <input name="bot-feld"></label></p>
+
+            <div class="form-grid">
+
+              <!-- Kontakt -->
+              <div class="anfrage-section-label">Ihre Kontaktdaten</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="a-name">Name *</label>
+                  <input type="text" id="a-name" name="name" placeholder="Max Mustermann" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="a-tel">Telefon *</label>
+                  <input type="tel" id="a-tel" name="telefon" placeholder="+49 …" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="a-email">E-Mail</label>
+                <input type="email" id="a-email" name="email" placeholder="name@beispiel.de">
+              </div>
+
+              <!-- Immobilie -->
+              <div class="anfrage-section-label" style="margin-top:0.5rem;">Angaben zur Immobilie</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="a-art">Art der Immobilie</label>
+                  <select id="a-art" name="art">
+                    <option value="">— Bitte wählen —</option>
+                    <option>Wohnung</option>
+                    <option>Haus</option>
+                    <option>Keller / Dachboden</option>
+                    <option>Gewerbe</option>
+                    <option>Sonstiges</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="a-groesse">Größe (ca. m²)</label>
+                  <input type="number" id="a-groesse" name="groesse" placeholder="z.B. 75" min="1">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="a-ort">Stadt / PLZ</label>
+                  <input type="text" id="a-ort" name="ort" placeholder="z.B. Bremen, 28195">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="a-termin">Wunschtermin</label>
+                  <select id="a-termin" name="wunschtermin">
+                    <option>So bald wie möglich</option>
+                    <option>Diese Woche</option>
+                    <option>Nächste Woche</option>
+                    <option>Flexibel</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="a-msg">Kurze Beschreibung <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span></label>
+                <textarea
+                  id="a-msg"
+                  name="beschreibung"
+                  rows="3"
+                  placeholder="z.B. vollständige Haushaltsauflösung nach Todesfall, inkl. Keller und Garage …"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center; padding:1rem;">
+                Unverbindliche Anfrage senden →
+              </button>
+
+              <p style="font-size:0.72rem; color:var(--text-muted); text-align:center; margin-top:-0.5rem; line-height:1.5;">
+                Mit dem Absenden stimmen Sie unserer <a href="datenschutz.html" style="color:var(--teal-primary);">Datenschutzerklärung</a> zu.
+              </p>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Anker-Alias für #beratung-Links -->
+<span id="beratung" style="display:none;"></span>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section id="bewertungen" class="section section--light">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label label--light">Kundenstimmen</span>
+      <h2>Was unsere Kunden sagen</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">Absolut professionelles Team. Die Wohnung meiner Mutter wurde innerhalb eines Tages komplett geräumt — sauber, respektvoll und zum vereinbarten Preis. Kann ich nur weiterempfehlen.</p>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Maria K.</div>
+            <div class="testimonial-source">Bremen · Google Bewertung</div>
+          </div>
+          <div class="google-badge">G</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">Sehr faire Preise und ein freundliches Team. Die Küche und alle Einbauschränke wurden fachgerecht demontiert, ohne dabei Wände oder Böden zu beschädigen. Top Arbeit!</p>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Thomas B.</div>
+            <div class="testimonial-source">Oldenburg · Google Bewertung</div>
+          </div>
+          <div class="google-badge">G</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">Nach dem Todesfall meines Vaters mussten wir schnell handeln. Das Team war sehr einfühlsam, hat alles diskret abgewickelt und uns dabei wirklich geholfen. Danke von Herzen.</p>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Sandra L.</div>
+            <div class="testimonial-source">Delmenhorst · Google Bewertung</div>
+          </div>
+          <div class="google-badge">G</div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="kontakt__form-wrap">
-      <!-- Netlify Form -->
-      <form
-        name="anfrage"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        class="kontakt__form"
-        id="kontaktForm"
-      >
-        <!-- Honeypot field (hidden from humans) -->
-        <p hidden><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
-        <input type="hidden" name="form-name" value="anfrage" />
 
+<!-- ============================================================
+     EINZUGSGEBIET
+     ============================================================ -->
+<section id="gebiet" class="section section--dark noise-dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label label--dark">Einzugsgebiet</span>
+      <h2 style="color:var(--white)">Wir sind in der Region für Sie da</h2>
+    </div>
+
+    <div class="city-cloud reveal">
+      <span class="city-tag">Bremen</span>
+      <span class="city-tag">Bremerhaven</span>
+      <span class="city-tag">Oldenburg</span>
+      <span class="city-tag">Delmenhorst</span>
+      <span class="city-tag">Verden</span>
+      <span class="city-tag">Achim</span>
+      <span class="city-tag">Syke</span>
+      <span class="city-tag">Bassum</span>
+      <span class="city-tag">Wildeshausen</span>
+      <span class="city-tag">Stuhr</span>
+      <span class="city-tag">Weyhe</span>
+    </div>
+
+    <p class="gebiet-note reveal reveal-delay-1">
+      Außerhalb dieser Gebiete? Sprechen Sie uns an — wir finden eine Lösung.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq" class="section section--light-2">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="label label--light">FAQ</span>
+      <h2>Häufige Fragen</h2>
+    </div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Was kostet eine Haushaltsauflösung?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Der Preis hängt von Größe, Inhalt und Zustand der Immobilie ab. Stellen Sie eine kostenlose Anfrage über unser Formular oder vereinbaren Sie eine Besichtigung für ein verbindliches Festpreisangebot.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Wie schnell können Sie einen Termin anbieten?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">In der Regel können wir innerhalb von 3–5 Werktagen einen Besichtigungs- oder Durchführungstermin anbieten. In dringenden Fällen sprechen Sie uns einfach direkt an.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Was passiert mit den Gegenständen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Wiederverwendbares wird gespendet oder weiterverkauft. Der restliche Hausrat wird fachgerecht und umweltgerecht entsorgt. Wertgegenstände werden selbstverständlich gesondert behandelt.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Muss ich während der Auflösung anwesend sein?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Nein. Eine einfache Schlüsselübergabe ist ausreichend. Viele unserer Kunden sind während der Durchführung nicht vor Ort — das ist kein Problem.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Gibt es versteckte Kosten?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Nein. Unser Angebot ist ein Festpreis — was wir vereinbaren, das zahlen Sie. Keine Nachforderungen, keine Überraschungen.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Bieten Sie auch Entrümpelung nach Todesfall an?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Ja. Wir sind erfahren im diskreten Umgang mit dieser sensiblen Situation und gehen mit der gebotenen Ruhe und Rücksicht vor. Wertgegenstände und persönliche Dokumente werden gesichert übergeben.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Wie läuft die Bezahlung ab?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Die Rechnung erhalten Sie nach Abschluss der Arbeiten per E-Mail. Zahlung per Überweisung oder nach Absprache auch bar vor Ort.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Was bedeutet „besenrein"?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Wir hinterlassen alle Räumlichkeiten gereinigt und besenrein — sodass sie direkt zur Besichtigung, Übergabe oder Renovierung bereit sind.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     KONTAKT & STANDORT
+     ============================================================ -->
+<section id="kontakt" class="section section--dark noise-dark">
+  <div class="container">
+    <div class="kontakt-layout">
+
+      <div>
+        <div class="reveal">
+          <span class="label label--dark">Kontakt</span>
+          <h2 style="color:var(--white); margin-top:0.75rem; margin-bottom:2rem;">Kontakt aufnehmen</h2>
+        </div>
+        <div class="kontakt-items">
+          <div class="kontakt-item reveal">
+            <div class="kontakt-icon">📍</div>
+            <div>
+              <div class="kontakt-item-label">Einsatzgebiet</div>
+              <div class="kontakt-item-val">
+                <span class="kontakt-highlight">Bremen</span> &amp;
+                <span class="kontakt-highlight">Niedersachsen</span>
+                <br>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Wir kommen zu Ihnen vor Ort</span>
+              </div>
+            </div>
+          </div>
+          <div class="kontakt-item reveal reveal-delay-1">
+            <div class="kontakt-icon">📞</div>
+            <div>
+              <div class="kontakt-item-label">Telefon</div>
+              <div class="kontakt-item-val"><a href="tel:+4915229268427">+49 152 29268427</a></div>
+            </div>
+          </div>
+          <div class="kontakt-item reveal reveal-delay-2">
+            <div class="kontakt-icon">✉️</div>
+            <div>
+              <div class="kontakt-item-label">E-Mail</div>
+              <div class="kontakt-item-val"><a href="mailto:info@mnt-haushaltsaufloesung.de">info@mnt-haushaltsaufloesung.de</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Foto rechts -->
+      <div class="kontakt-foto reveal reveal-delay-1">
+        <img src="assets/images/bremen.jpg" alt="Bremen — MNT Einsatzgebiet">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-logo">
+        <!-- Logo + Name — gleiche Struktur wie im Header -->
+        <div class="footer-logo-inner">
+          <img src="assets/images/Logo.png" alt="MNT-Haushaltsauflösung Logo">
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">MNT</span>
+            <span class="nav-logo-sub">Haushaltsauflösung</span>
+          </div>
+        </div>
+        <p class="footer-brand-text">
+          Professionelle Haushaltsauflösung und Entrümpelung in Bremen und Niedersachsen.
+          Schnell, diskret, zum Festpreis.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#preisrechner">Preisanfrage</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <ul class="footer-links">
+          <li><a href="#leistungen">Haushaltsauflösung</a></li>
+          <li><a href="#leistungen">Entrümpelung</a></li>
+          <li><a href="#leistungen">Demontage</a></li>
+          <li><a href="#leistungen">Abbrucharbeiten</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Rechtliches</h4>
+        <ul class="footer-links">
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 MNT-Haushaltsauflösung · Alle Rechte vorbehalten</div>
+      <div class="footer-badge">Bremen &amp; Niedersachsen</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     ANFRAGE-MODAL
+     Öffnet sich via openModal() — von Hero-CTA, Nav-CTA, Ergebnis-CTA
+     ============================================================ -->
+<div id="anfrage-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Anfrage stellen">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+
+    <div class="modal-head">
+      <span class="label label--light">Kostenlose Anfrage</span>
+      <h3 style="margin-top:0.5rem; font-family:var(--ff-head); font-size:1.5rem;">Wir melden uns bei Ihnen</h3>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.35rem;">Kein Risiko · Kein Spam · Kostenlos &amp; unverbindlich</p>
+    </div>
+
+    <!--
+      NETLIFY FORMS — Modal-Formular
+      Separater Formularname "rueckrufanfrage" damit es im Dashboard
+      getrennt von der Preisrechner-Anfrage erscheint.
+    -->
+    <form
+      name="rueckrufanfrage"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-feld2"
+      action="/danke.html"
+    >
+      <input type="hidden" name="form-name" value="rueckrufanfrage">
+      <p style="display:none;"><label>Nicht ausfüllen: <input name="bot-feld2"></label></p>
+
+      <div class="form-grid">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="name">Name</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Max Mustermann" required />
+            <label class="form-label" for="m-name">Name *</label>
+            <input type="text" id="m-name" name="name" placeholder="Ihr Name" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="telefon">Telefon</label>
-            <input class="form-input" type="tel" id="telefon" name="telefon" placeholder="+49 ..." />
+            <label class="form-label" for="m-tel">Telefon *</label>
+            <input type="tel" id="m-tel" name="telefon" placeholder="+49 …" required>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="email">E-Mail</label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="ihre@email.de" required />
+          <label class="form-label" for="m-email">E-Mail</label>
+          <input type="email" id="m-email" name="email" placeholder="name@beispiel.de">
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="nachricht">Ihre Nachricht</label>
-          <textarea class="form-input form-textarea" id="nachricht" name="nachricht" placeholder="Beschreiben Sie kurz Ihr Anliegen..." rows="4"></textarea>
+          <label class="form-label" for="m-msg">Kurze Beschreibung</label>
+          <textarea id="m-msg" name="beschreibung" rows="2"
+            placeholder="z.B. 3-Zimmer-Wohnung, Bremen-Mitte …"></textarea>
         </div>
 
-        <button type="submit" class="btn btn--primary btn--lg btn--full form-submit">
-          Anfrage absenden →
+        <div class="form-group">
+          <label class="form-label" for="m-termin">Wunschtermin</label>
+          <select id="m-termin" name="wunschtermin">
+            <option>So bald wie möglich</option>
+            <option>Diese Woche</option>
+            <option>Nächste Woche</option>
+            <option>Flexibel</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center;">
+          Rückruf anfordern →
         </button>
 
-        <div class="form-success" id="formSuccess">
-          ✓ Vielen Dank! Wir melden uns innerhalb von 24 Stunden.
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__logo">
-        <img src="assets/images/logo_gross.jpeg" alt="MNT" class="footer__logo-img" />
+        <p style="font-size:0.72rem; color:var(--text-muted); text-align:center; margin-top:-0.5rem;">
+          Oder direkt anrufen: <a href="tel:+4915229268427" style="color:var(--teal-primary); font-weight:600;">+49 152 29268427</a>
+        </p>
       </div>
-      <div class="footer__links">
-        <a href="impressum.html" class="footer__link">Impressum</a>
-        <a href="datenschutz.html" class="footer__link">Datenschutz</a>
-      </div>
-      <p class="footer__copy">© 2024 MNT Haushaltsauflösung</p>
-    </div>
-  </footer>
+    </form>
+  </div>
+</div>
 
-  <script src="assets/js/main.js"></script>
+<!-- ============================================================
+     STICKY FOOTER BAR
+     Erscheint nach 3s oder sobald der Nutzer past den Hero scrollt
+     ============================================================ -->
+<div id="sticky-bar" class="sticky-bar">
+  <div class="sticky-bar-inner">
+    <div class="sticky-bar-text">
+      <strong>Kostenlose Beratung</strong>
+      <span>Festpreisgarantie · Schnelle Terminvergabe</span>
+    </div>
+    <div class="sticky-bar-actions">
+      <a href="tel:+4915229268427" class="sticky-bar-tel">📞 +49 152 29268427</a>
+      <button onclick="openModal()" class="btn btn--primary">Jetzt anfragen →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     COOKIE BANNER (DSGVO)
+     ============================================================ -->
+<div id="cookie-banner">
+  <p class="cookie-text">
+    Diese Website verwendet Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten.
+    Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.
+  </p>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-btn--accept" onclick="acceptCookies('all')">Alle akzeptieren</button>
+    <button class="cookie-btn cookie-btn--minimal" onclick="acceptCookies('minimal')">Nur notwendige</button>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ────────────────────────────────────────────────────────────
+   Navbar — Scroll-Effekt
+   ──────────────────────────────────────────────────────────── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ────────────────────────────────────────────────────────────
+   Hamburger / Mobile Menü
+   ──────────────────────────────────────────────────────────── */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ────────────────────────────────────────────────────────────
+   Scroll Reveal
+   ──────────────────────────────────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 150 + i * 130);
+  });
+});
+
+/* ────────────────────────────────────────────────────────────
+   MODAL — Anfrage-Popup
+   ──────────────────────────────────────────────────────────── */
+const modalOverlay = document.getElementById('anfrage-modal');
+
+function openModal() {
+  modalOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Focus auf erstes Feld
+  setTimeout(() => {
+    const first = modalOverlay.querySelector('input:not([type="hidden"])');
+    if (first) first.focus();
+  }, 300);
+}
+
+function closeModal() {
+  modalOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Klick auf Overlay (außerhalb der Box) schließt Modal
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+
+// ESC-Taste schließt Modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+});
+
+/* ────────────────────────────────────────────────────────────
+   STICKY BAR — erscheint wenn Hero nicht mehr sichtbar
+   ──────────────────────────────────────────────────────────── */
+const stickyBar = document.getElementById('sticky-bar');
+const heroSection = document.getElementById('hero');
+
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    // Bar zeigen wenn Hero nicht mehr im Viewport
+    stickyBar.classList.toggle('visible', !entry.isIntersecting);
+  });
+}, { threshold: 0.1 });
+
+heroObserver.observe(heroSection);
+
+/* ────────────────────────────────────────────────────────────
+   FAQ Accordion
+   ──────────────────────────────────────────────────────────── */
+function toggleFaq(btn) {
+  const item   = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+
+  document.querySelectorAll('.faq-item.open').forEach(openItem => {
+    openItem.classList.remove('open');
+    openItem.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   Cookie Banner
+   ──────────────────────────────────────────────────────────── */
+function initCookieBanner() {
+  if (!localStorage.getItem('mnt_cookies')) {
+    setTimeout(() => {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }, 1200);
+  }
+}
+
+function acceptCookies(type) {
+  localStorage.setItem('mnt_cookies', type);
+  const banner = document.getElementById('cookie-banner');
+  banner.style.transition = 'opacity 0.3s, transform 0.3s';
+  banner.style.opacity    = '0';
+  banner.style.transform  = 'translateY(16px)';
+  setTimeout(() => banner.remove(), 350);
+}
+
+initCookieBanner();
+</script>
+
 </body>
 </html>

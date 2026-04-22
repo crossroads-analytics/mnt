@@ -1,19 +1,21 @@
-# Netlify configuration for MNT Haushaltsauflösung
+# netlify.toml
+# MNT-Haushaltsauflösung — Netlify Konfiguration
 
 [build]
+  # Kein Build-Schritt nötig (statisches HTML/CSS/JS)
   publish = "."
 
-# Redirect after form submission
+# Weiterleitungen
 [[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
+  from    = "/danke"
+  to      = "/danke.html"
+  status  = 200
 
-# Security headers
+# Sicherheits-Header (empfohlen)
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
+    X-Frame-Options        = "DENY"
+    X-XSS-Protection       = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
