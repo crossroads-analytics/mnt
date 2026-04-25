@@ -17,17 +17,71 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* ── Success Popup ── */
+    .success-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .success-popup-overlay.open {
+      display: flex;
+    }
+    .success-popup-box {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 2.5rem 2rem 2rem;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+      animation: popup-in 0.35s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes popup-in {
+      from { opacity: 0; transform: scale(0.85) translateY(20px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .success-popup-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--teal-primary, #006567);
+      color: #fff;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .success-popup-title {
+      font-family: var(--ff-head, 'Playfair Display', serif);
+      font-size: 1.6rem;
+      margin: 0 0 0.5rem;
+      color: #111;
+    }
+    .success-popup-text {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
 <!-- ============================================================
-     NAVIGATION — heller Hintergrund mit Logo-Bild
+     NAVIGATION
      ============================================================ -->
 <nav id="navbar">
   <div class="container">
     <div class="nav-inner">
 
-      <!-- Logo + Firmenname -->
       <a href="#" class="nav-logo" aria-label="MNT-Haushaltsauflösung — Startseite">
         <img src="assets/images/Logo.png" alt="MNT-Haushaltsauflösung Logo">
         <div class="nav-logo-text">
@@ -45,7 +99,6 @@
 
       <button onclick="openModal()" class="btn btn--primary nav-cta">Anfrage stellen</button>
 
-      <!-- Hamburger für Mobile -->
       <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
         <span></span><span></span><span></span>
       </button>
@@ -69,10 +122,8 @@
 <section id="hero">
   <div class="hero-inner">
 
-    <!-- ── LINKS: Text + Features + CTAs ── -->
     <div class="hero-content">
 
-      <!-- Bewertungs-Badge -->
       <div class="hero-rating reveal">
         <span class="hero-rating-stars">⭐⭐⭐⭐⭐</span>
         <span class="hero-rating-text">5,0 · Google Bewertungen</span>
@@ -90,7 +141,6 @@
         mit Festpreisgarantie &amp; Besenrein-Garantie.
       </p>
 
-      <!-- Feature-Grid (2 Spalten, Plus-Icons) -->
       <div class="hero-features reveal reveal-delay-2">
         <div class="hero-feature">
           <span class="hero-feature-plus">+</span>
@@ -118,7 +168,6 @@
         </div>
       </div>
 
-      <!-- CTAs -->
       <div class="hero-ctas reveal reveal-delay-3">
         <button onclick="openModal()" class="btn btn--primary">Festpreis-Angebot anfordern →</button>
         <a href="tel:+4915229268427" class="btn btn--ghost">📞 Jetzt anrufen</a>
@@ -126,7 +175,6 @@
 
     </div>
 
-    <!-- ── RECHTS: Logo + Kontakt ── -->
     <div class="hero-graphic reveal reveal-delay-2">
       <div class="hero-contact-card">
         <img src="assets/images/Logo_gross.jpeg" alt="MNT-Haushaltsauflösung" class="hero-logo-gross">
@@ -238,15 +286,14 @@
   </div>
 </section>
 
+
 <!-- ============================================================
      PREISANFRAGE
-     Netlify-Formular mit Immobilien-Angaben → wir melden uns
      ============================================================ -->
 <section id="preisrechner" class="section section--light">
   <div class="container">
     <div class="rechner-layout">
 
-      <!-- Intro-Text links -->
       <div class="rechner-intro reveal">
         <span class="label label--light">Kostenlose Anfrage</span>
         <h2 style="margin-top:0.75rem; margin-bottom:1rem;">Preisanfrage stellen</h2>
@@ -267,27 +314,19 @@
         </div>
       </div>
 
-      <!-- Formular rechts -->
       <div class="reveal reveal-delay-1">
         <div class="anfrage-card">
-          <!--
-            NETLIFY FORMS — Preisanfrage
-            Submissions erscheinen im Netlify-Dashboard unter "Forms → preisanfrage"
-            action="/danke.html" leitet nach Submit weiter
-          -->
           <form
             name="preisanfrage"
             method="POST"
             data-netlify="true"
             data-netlify-honeypot="bot-feld"
-            action="/danke.html"
           >
             <input type="hidden" name="form-name" value="preisanfrage">
             <p style="display:none;"><label>Nicht ausfüllen: <input name="bot-feld"></label></p>
 
             <div class="form-grid">
 
-              <!-- Kontakt -->
               <div class="anfrage-section-label">Ihre Kontaktdaten</div>
               <div class="form-row">
                 <div class="form-group">
@@ -304,7 +343,6 @@
                 <input type="email" id="a-email" name="email" placeholder="name@beispiel.de">
               </div>
 
-              <!-- Immobilie -->
               <div class="anfrage-section-label" style="margin-top:0.5rem;">Angaben zur Immobilie</div>
               <div class="form-row">
                 <div class="form-group">
@@ -367,8 +405,8 @@
   </div>
 </section>
 
-<!-- Anker-Alias für #beratung-Links -->
 <span id="beratung" style="display:none;"></span>
+
 
 <!-- ============================================================
      TESTIMONIALS
@@ -591,7 +629,6 @@
         </div>
       </div>
 
-      <!-- Foto rechts -->
       <div class="kontakt-foto reveal reveal-delay-1">
         <img src="assets/images/bremen.jpg" alt="Bremen — MNT Einsatzgebiet">
       </div>
@@ -609,7 +646,6 @@
     <div class="footer-grid">
 
       <div class="footer-logo">
-        <!-- Logo + Name — gleiche Struktur wie im Header -->
         <div class="footer-logo-inner">
           <img src="assets/images/Logo.png" alt="MNT-Haushaltsauflösung Logo">
           <div class="nav-logo-text">
@@ -665,7 +701,6 @@
 
 <!-- ============================================================
      ANFRAGE-MODAL
-     Öffnet sich via openModal() — von Hero-CTA, Nav-CTA, Ergebnis-CTA
      ============================================================ -->
 <div id="anfrage-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Anfrage stellen">
   <div class="modal-box">
@@ -677,17 +712,11 @@
       <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.35rem;">Kein Risiko · Kein Spam · Kostenlos &amp; unverbindlich</p>
     </div>
 
-    <!--
-      NETLIFY FORMS — Modal-Formular
-      Separater Formularname "rueckrufanfrage" damit es im Dashboard
-      getrennt von der Preisrechner-Anfrage erscheint.
-    -->
     <form
       name="rueckrufanfrage"
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-feld2"
-      action="/danke.html"
     >
       <input type="hidden" name="form-name" value="rueckrufanfrage">
       <p style="display:none;"><label>Nicht ausfüllen: <input name="bot-feld2"></label></p>
@@ -737,9 +766,27 @@
   </div>
 </div>
 
+
+<!-- ============================================================
+     SUCCESS POPUP
+     ============================================================ -->
+<div id="success-popup" class="success-popup-overlay" role="dialog" aria-modal="true">
+  <div class="success-popup-box">
+    <div class="success-popup-icon">✓</div>
+    <h3 class="success-popup-title">Anfrage gesendet!</h3>
+    <p class="success-popup-text">
+      Vielen Dank für Ihre Anfrage.<br>
+      Wir melden uns innerhalb von <strong>24 Stunden</strong> bei Ihnen.
+    </p>
+    <button class="btn btn--primary" onclick="closeSuccessPopup()" style="margin-top:1.5rem; width:100%; justify-content:center;">
+      Verstanden
+    </button>
+  </div>
+</div>
+
+
 <!-- ============================================================
      STICKY FOOTER BAR
-     Erscheint nach 3s oder sobald der Nutzer past den Hero scrollt
      ============================================================ -->
 <div id="sticky-bar" class="sticky-bar">
   <div class="sticky-bar-inner">
@@ -753,6 +800,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- ============================================================
      COOKIE BANNER (DSGVO)
@@ -773,26 +821,20 @@
      JAVASCRIPT
      ============================================================ -->
 <script>
-/* ────────────────────────────────────────────────────────────
-   Navbar — Scroll-Effekt
-   ──────────────────────────────────────────────────────────── */
+/* ── Navbar ── */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* ────────────────────────────────────────────────────────────
-   Hamburger / Mobile Menü
-   ──────────────────────────────────────────────────────────── */
+/* ── Hamburger / Mobile Menü ── */
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open');
   mobileMenu.classList.toggle('open');
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
-
 document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -801,9 +843,7 @@ document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
   });
 });
 
-/* ────────────────────────────────────────────────────────────
-   Scroll Reveal
-   ──────────────────────────────────────────────────────────── */
+/* ── Scroll Reveal ── */
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -814,80 +854,93 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 revealEls.forEach(el => revealObserver.observe(el));
-
 window.addEventListener('load', () => {
   document.querySelectorAll('#hero .reveal').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), 150 + i * 130);
   });
 });
 
-/* ────────────────────────────────────────────────────────────
-   MODAL — Anfrage-Popup
-   ──────────────────────────────────────────────────────────── */
+/* ── MODAL ── */
 const modalOverlay = document.getElementById('anfrage-modal');
-
 function openModal() {
   modalOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
-  // Focus auf erstes Feld
   setTimeout(() => {
     const first = modalOverlay.querySelector('input:not([type="hidden"])');
     if (first) first.focus();
   }, 300);
 }
-
 function closeModal() {
   modalOverlay.classList.remove('open');
   document.body.style.overflow = '';
 }
-
-// Klick auf Overlay (außerhalb der Box) schließt Modal
 modalOverlay.addEventListener('click', (e) => {
   if (e.target === modalOverlay) closeModal();
 });
-
-// ESC-Taste schließt Modal
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
 });
 
-/* ────────────────────────────────────────────────────────────
-   STICKY BAR — erscheint wenn Hero nicht mehr sichtbar
-   ──────────────────────────────────────────────────────────── */
-const stickyBar = document.getElementById('sticky-bar');
-const heroSection = document.getElementById('hero');
+/* ── SUCCESS POPUP ── */
+const successPopup = document.getElementById('success-popup');
+function openSuccessPopup() {
+  successPopup.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSuccessPopup() {
+  successPopup.classList.remove('open');
+  document.body.style.overflow = '';
+}
+successPopup.addEventListener('click', (e) => {
+  if (e.target === successPopup) closeSuccessPopup();
+});
 
+/* ── AJAX FORM SUBMIT (Netlify) ── */
+document.querySelectorAll('form[data-netlify="true"]').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      });
+      closeModal();         // Modal schließen falls offen
+      form.reset();         // Formular leeren
+      openSuccessPopup();   // Erfolgs-Popup zeigen
+    } catch (err) {
+      alert('Ein Fehler ist aufgetreten. Bitte rufen Sie uns direkt an: +49 152 29268427');
+    }
+  });
+});
+
+/* ── STICKY BAR ── */
+const stickyBar   = document.getElementById('sticky-bar');
+const heroSection = document.getElementById('hero');
 const heroObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    // Bar zeigen wenn Hero nicht mehr im Viewport
     stickyBar.classList.toggle('visible', !entry.isIntersecting);
   });
 }, { threshold: 0.1 });
-
 heroObserver.observe(heroSection);
 
-/* ────────────────────────────────────────────────────────────
-   FAQ Accordion
-   ──────────────────────────────────────────────────────────── */
+/* ── FAQ Accordion ── */
 function toggleFaq(btn) {
   const item   = btn.closest('.faq-item');
   const answer = item.querySelector('.faq-answer');
   const isOpen = item.classList.contains('open');
-
   document.querySelectorAll('.faq-item.open').forEach(openItem => {
     openItem.classList.remove('open');
     openItem.querySelector('.faq-answer').style.maxHeight = '0';
   });
-
   if (!isOpen) {
     item.classList.add('open');
     answer.style.maxHeight = answer.scrollHeight + 'px';
   }
 }
 
-/* ────────────────────────────────────────────────────────────
-   Cookie Banner
-   ──────────────────────────────────────────────────────────── */
+/* ── Cookie Banner ── */
 function initCookieBanner() {
   if (!localStorage.getItem('mnt_cookies')) {
     setTimeout(() => {
@@ -895,7 +948,6 @@ function initCookieBanner() {
     }, 1200);
   }
 }
-
 function acceptCookies(type) {
   localStorage.setItem('mnt_cookies', type);
   const banner = document.getElementById('cookie-banner');
@@ -904,7 +956,6 @@ function acceptCookies(type) {
   banner.style.transform  = 'translateY(16px)';
   setTimeout(() => banner.remove(), 350);
 }
-
 initCookieBanner();
 </script>
 
